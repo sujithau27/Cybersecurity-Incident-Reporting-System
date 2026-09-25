@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Cybersecurity Incident Reporting System</h1>
+
+    <h2>Dashboard</h2>
+
+    <p>
+        Welcome, {{ session["username"] }}!
+    </p>
+
+    <hr>
+
+    <a href="/add_incident">
+        <button>Add New Incident</button>
+    </a>
+
+    &nbsp;
+
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+
+    <h2>Reported Incidents</h2>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Severity</th>
+            <th>Reported By</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% for incident in incidents %}
+
+        <tr>
+
+            <td>{{ incident.id }}</td>
+
+            <td>{{ incident.title }}</td>
+
+            <td>{{ incident.incident_type }}</td>
+
+            <td>{{ incident.description }}</td>
+
+            <td>{{ incident.severity }}</td>
+
+            <td>{{ incident.reported_by }}</td>
+
+            <td>{{ incident.created_at }}</td>
+
+            <td>
+
+                <a href="/edit/{{ incident.id }}">
+                    Edit
+                </a>
+
+                <br><br>
+
+                <form method="POST"
+                      action="/delete/{{ incident.id }}">
+
+                    <button type="submit">
+                        Delete
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

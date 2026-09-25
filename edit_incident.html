@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Incident</title>
+</head>
+
+<body>
+
+    <h1>Edit Cybersecurity Incident</h1>
+
+    <form method="POST">
+
+        <label>Incident Title:</label>
+        <br>
+
+        <input type="text"
+               name="title"
+               value="{{ incident.title }}"
+               required>
+
+        <br><br>
+
+
+        <label>Incident Type:</label>
+        <br>
+
+        <select name="incident_type" required>
+
+            <option value="Phishing">Phishing</option>
+            <option value="Malware">Malware</option>
+            <option value="Data Breach">Data Breach</option>
+            <option value="Password Attack">Password Attack</option>
+            <option value="Network Attack">Network Attack</option>
+            <option value="Other">Other</option>
+
+        </select>
+
+        <br><br>
+
+
+        <label>Description:</label>
+        <br>
+
+        <textarea name="description"
+                  rows="5"
+                  cols="40"
+                  required>{{ incident.description }}</textarea>
+
+        <br><br>
+
+
+        <label>Severity:</label>
+        <br>
+
+        <select name="severity" required>
+
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+
+        </select>
+
+        <br><br>
+
+
+        <button type="submit">
+            Update Incident
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/dashboard">
+        Back to Dashboard
+    </a>
+
+</body>
+
+</html>
